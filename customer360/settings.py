@@ -9,8 +9,8 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-z77n$q5!%g$t5*tv!x=f2_n(ey8q-mf^!-gcef)6@%&qpf+*4-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS=["*"]
+
+CSRF_TRUSTED_ORIGINS = ['https://*.cognitiveclass.ai']
 
 
 # Application definition
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	'customer360'
 ]
 
 MIDDLEWARE = [
@@ -118,5 +121,9 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR,"static/"),
+)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
